@@ -1,0 +1,24 @@
+version: "3.4"
+
+services:
+  db:
+    image: postgres:12-alpine
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
+    ports:
+      - 15432:5432
+    tty: true
+    environment:
+      POSTGRES_DB: vice_boilerplate_api
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: topsecret
+    healthcheck:
+      test: pg_isready -d $$POSTGRES_DB -U $$POSTGRES_USER
+      interval: 5s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  db-data:
