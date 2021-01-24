@@ -12,6 +12,7 @@ API for Vice Software&#39;s React, React Query and FeathersJs boilerplate.
     - [Running a Dev Docker Setup](#running-a-dev-docker-setup)
         - [Resetting the Database](#resetting-the-database)
 - [Architecture](#architecture)
+    - [Web UI](#web-ui)
     - [API](#api)
 
 <!-- /TOC -->
