@@ -29,9 +29,7 @@ export default function (app: Application): typeof Model {
   (users as any).associate = function (models: any): void {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    this.hasMany(models.todos, {
-      as: "todos"
-    });
+    this.hasMany(models.todos);
   };
 
   return users;

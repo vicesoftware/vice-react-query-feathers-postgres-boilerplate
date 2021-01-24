@@ -15,10 +15,6 @@ export default function (app: Application): typeof Model {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false
-    },
-    userId: {
-      type: DataTypes.NUMBER,
-      allowNull: false
     }
   }, {
     hooks: {
@@ -32,10 +28,7 @@ export default function (app: Application): typeof Model {
   (todos as any).associate = function (models: any): void {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    this.belongsTo(models.users, {
-      foreignKey: "userid",
-      as: "user"
-    });
+    this.belongsTo(models.users);
   };
 
   return todos;
