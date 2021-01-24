@@ -10,6 +10,15 @@
     "entity": "user",
     "service": "users",
     "secret": "kz+BqRE+NsFUSQrdTAdYHUwoMC0=",
+    "oauth": {
+      "redirect": "/",
+      "auth0": {
+        "key": "lbOnKh40y4sBsdaRFwN5805ul54M05ZX",
+        "secret": "1b3VBW4xxgtCNHUk2MyIbHvTBO-dkK4nKoQx9FeIAO59a1rcvmmng7tEAsap_DXb",
+        "subdomain": "vice-react-query-feathers-boilerplate.us",
+        "scope": ["openid", "profile", "email"]
+      }
+    },
     "authStrategies": [
       "jwt",
       "local"
@@ -28,5 +37,5 @@
       "passwordField": "password"
     }
   },
-  "postgres": "postgres://postgres:@localhost:5432/vice_boilerplate_api"
+  "postgres": "postgres://pguser:topsecret@localhost:15432/vice_boilerplate_api"
 }

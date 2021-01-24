@@ -17,6 +17,11 @@ export default function (app: Application): typeof Model {
       type: DataTypes.STRING,
       allowNull: false
     },
+    auth0Id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    }
   
   
   }, {
