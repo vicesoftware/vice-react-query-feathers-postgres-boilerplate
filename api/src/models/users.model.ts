@@ -13,10 +13,6 @@ export default function (app: Application): typeof Model {
       allowNull: false,
       unique: true
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     auth0Id: {
       type: DataTypes.STRING,
       allowNull: false,
