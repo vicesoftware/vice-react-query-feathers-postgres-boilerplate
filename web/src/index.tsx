@@ -5,9 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Auth0Provider } from "@auth0/auth0-react";
+import { ReactQueryDevtools } from 'react-query/devtools'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const queryClient = new QueryClient()
+
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 ReactDOM.render(
 
@@ -19,6 +22,7 @@ ReactDOM.render(
       >
         <QueryClientProvider client={queryClient}>
           <App />
+          {isDevelopment && <ReactQueryDevtools initialIsOpen={false} />}
         </QueryClientProvider>
       </Auth0Provider>,
     </React.StrictMode>,
