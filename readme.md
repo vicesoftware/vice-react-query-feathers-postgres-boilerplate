@@ -43,7 +43,7 @@ This application is a single page application with the following components.
 React based web frontend. See documentation [here](web/readme.md).
 
 ## API
-FeatherJs based backend. See the documentation [here](api/readme.md).
+FeatherJs based backend. See the documentation [here](api/README.md).
 
 
 
