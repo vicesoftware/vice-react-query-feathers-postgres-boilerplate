@@ -10,8 +10,6 @@ function App() {
     fetch('health-check')
       .then(r => r.json())
       .then(j => {
-        const jAsJson = JSON.stringify(j);
-        console.log(jAsJson);
         setIsHealthy(j.isHealthy);
       });
   }, [setIsHealthy])
