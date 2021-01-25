@@ -1,20 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useQuery } from 'react-query'
 import Badge from 'react-bootstrap/Badge'
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const [isHealthy, setIsHealthy] = useState(false);
-  
-  useEffect(() => {
+  const isHealthyQuery = useQuery('healthCheck', () =>     
     fetch('health-check')
-      .then(r => r.json())
-      .then(j => {
-        const jAsJson = JSON.stringify(j);
-        console.log(jAsJson);
-        setIsHealthy(j.isHealthy);
-      });
-  }, [setIsHealthy])
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+
+        return false;
+      })
+      .then(json => json.isHealthy)
+      .catch(e => {
+        console.log(e);
+        return false;
+      })
+  , { refetchInterval: 500 });
+
+  const isHealthy = isHealthyQuery?.data || false;
 
   return (
     <div className="App">
