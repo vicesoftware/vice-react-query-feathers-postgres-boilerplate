@@ -40,10 +40,10 @@ and then bring it back up as described [here](#running-a-dev-docker-setup).
 This application is a single page application with the following components.
 
 ## Web UI
-React based web frontend. See documentation [here](./web/readme.md).
+React based web frontend. See documentation [here](web/readme.md).
 
 ## API
-FeatherJs based backend. See the documentation [here](./api/readme.md).
+FeatherJs based backend. See the documentation [here](api/readme.md).
 
 
 
