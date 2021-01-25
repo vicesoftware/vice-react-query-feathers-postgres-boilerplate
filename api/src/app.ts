@@ -6,7 +6,7 @@ import cors from 'cors';
 
 import feathers from '@feathersjs/feathers';
 import configuration from '@feathersjs/configuration';
-import express from '@feathersjs/express';
+import express, { response } from '@feathersjs/express';
 import socketio from '@feathersjs/socketio';
 
 
@@ -37,6 +37,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 // Host the public folder
 app.use('/', express.static(app.get('public')));
+
+// Create an unauthenticated healthcheck
+app.use('/health-check', (request, response) => response.json({ isHealthy: true}));
 
 // Set up Plugins and providers
 app.configure(express.rest());
