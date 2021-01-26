@@ -12,19 +12,30 @@ const queryClient = new QueryClient()
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
+const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
+
+if (!domain) {
+  throw new Error('You must defined the env var REACT_APP_AUTH0_DOMAIN. For local development you can do this in your local .env file');
+}
+
+if (!clientId) {
+  throw new Error('You must defined the env var REACT_APP_AUTH0_CLIENT_ID. For local development you can do this in your local .env file');
+}
+
 ReactDOM.render(
 
     <React.StrictMode>
       <Auth0Provider
-        domain="vice-react-query-feathers-boilerplate.us.auth0.com"
-        clientId="sU7j9kc4TzG2nt07WVuWAuTQDmBuPt5i"
+        domain={domain}
+        clientId={clientId}
         redirectUri={window.location.origin}
       >
         <QueryClientProvider client={queryClient}>
           <App />
           {isDevelopment && <ReactQueryDevtools initialIsOpen={false} />}
         </QueryClientProvider>
-      </Auth0Provider>,
+      </Auth0Provider>
     </React.StrictMode>,
   document.getElementById('root')
 );

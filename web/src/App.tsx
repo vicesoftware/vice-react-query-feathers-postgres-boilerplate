@@ -27,8 +27,8 @@ function App() {
 
   return (
     <div className="App">
-    <MenuBar/>
-    <ApiStatusIndicator/>
+      <MenuBar/>
+      <ApiStatusIndicator/>
     </div>
   );
 }
