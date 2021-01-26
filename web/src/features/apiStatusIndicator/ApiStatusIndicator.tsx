@@ -23,7 +23,7 @@ export const  ApiStatusIndicator = () => {
 
     return (
         <Badge variant={isHealthy ? 'success' : 'danger'}>
-            {isHealthy ? "API is healthy": "API is not healthy"}
+            {isHealthy ? "API Connected": "API Disconnected"}
         </Badge>
     );
 }
