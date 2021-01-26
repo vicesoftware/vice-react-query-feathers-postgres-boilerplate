@@ -38,8 +38,6 @@ function App() {
     const result = await response.json();
 
     return result;
-
-    return Promise.resolve();
   },    {
     // The query will not execute until the userId exists
     enabled: !!accessToken,
