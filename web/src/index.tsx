@@ -30,8 +30,7 @@ ReactDOM.render(
         domain={domain}
         clientId={clientId}
         redirectUri={window.location.origin}
-        audience='https://vice-react-query-feathers-boilerplate-api'
-        scope='openid profile email'
+        audience='https://vice-react-query-feathers-boilerplate-api-hs'
       >
         <QueryClientProvider client={queryClient}>
           <App />

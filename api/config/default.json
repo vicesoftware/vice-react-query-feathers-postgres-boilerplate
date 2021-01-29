@@ -7,9 +7,9 @@
     "max": 50
   },
   "authentication": {
-    "entity": "user",
+    "entity": null,
     "service": "users",
-    "secret": "kz+BqRE+NsFUSQrdTAdYHUwoMC0=",
+    "secret": "erWJdyEwutsRxuEJg1BNrtc1iKBPTjna",
     "oauth": {
       "redirect": "/",
       "auth0": {
@@ -27,9 +27,9 @@
       "header": {
         "typ": "access"
       },
-      "audience": "https://vice-react-query-feathers-boilerplate-api",
-      "issuer": "feathers",
-      "algorithm": "RS256",
+      "audience": "https://vice-react-query-feathers-boilerplate-api-hs",
+      "issuer": "https://vice-react-query-feathers-boilerplate.us.auth0.com/",
+      "algorithm": "HS256",
       "expiresIn": "1d"
     },
     "local": {

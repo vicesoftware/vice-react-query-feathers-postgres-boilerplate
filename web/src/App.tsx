@@ -12,8 +12,6 @@ function App() {
   useEffect(() => {
     (async () => {
       try {
-        // I'm currently getting a consent error from Auth0.
-        // This link might be relevant: https://community.auth0.com/t/how-to-gettokensilently-without-consent-on-localhost/39183/2
         const token = await getAccessTokenSilently();
 
         console.log(token);
