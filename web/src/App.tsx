@@ -18,7 +18,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Badge variant={isHealthy ? 'success' : 'danger'}>{isHealthy ? "API is healthy": "API is not healthy"}</Badge>
+        <Badge variant={isHealthy ? 'success' : 'danger'}>
+          {isHealthy ? "API is healthy": "API is not healthy"}
+        </Badge>
       </header>
     </div>
   );
