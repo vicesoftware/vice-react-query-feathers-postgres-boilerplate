@@ -16,6 +16,7 @@ API for Vice Software&#39;s react, react-query and feathersjs boilerplate.
 - [Testing](#testing)
 - [Scaffolding](#scaffolding)
 - [Debugging](#debugging)
+- [Swagger](#swagger)
 - [Authentication Setup](#authentication-setup)
     - [Authentication Configuration](#authentication-configuration)
     - [How to Make an Authenticated Call to the API](#how-to-make-an-authenticated-call-to-the-api)
@@ -77,6 +78,11 @@ export DEBUG=@feathers*
 After you have the `DEBUG` env var configured as described above you should see verbose output similar to what is shown below if you did it correctly.
 
 ![](README.md-images/2021-01-24-13-58-12.png)
+
+# Swagger
+You can see a swagger page of the available endpoints here: http://localhost:3030/docs/
+
+> **Note:** we are using the [feathers-swagger](https://github.com/feathersjs-ecosystem/feathers-swagger) middleware. 
 
 # Authentication Setup
 We are using Auth0 for Authentication. 
