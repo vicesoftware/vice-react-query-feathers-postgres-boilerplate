@@ -12,7 +12,7 @@ export default function (app: Application): typeof Model {
       allowNull: false
     },
     description: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
       allowNull: false,
       defaultValue: false
     }
