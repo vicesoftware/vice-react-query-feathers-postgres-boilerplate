@@ -21,6 +21,14 @@ export class Posts extends Service {
     });
   }
 
+  async get(id: number): Promise<Post> {
+    return this.Model.findOne({
+      where: {
+        id,
+      },
+    });
+  }
+
   async create({ description, title }: Post): Promise<Post> {
     const post: Post = {
       title,
@@ -32,5 +40,21 @@ export class Posts extends Service {
     });
 
     return post;
+  }
+
+  async patch(id: number, body: Partial<Post>): Promise<Post> {
+    return this.Model.update({ ...body }, {
+      where: {
+        id,
+      },
+    });
+  }
+
+  async remove(id: number): Promise<Post> {
+    return await this.Model.destroy({
+      where: {
+        id,
+      },
+    });
   }
 }
