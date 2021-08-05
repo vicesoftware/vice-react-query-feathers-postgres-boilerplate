@@ -16,8 +16,7 @@ export class Posts extends Service {
   async find({ query }: { query: Partial<Post> }): Promise<Post[]> {
     return this.Model.findAll({
       where: {
-        title: query.title,
-        description: query.description,
+        ...query,
       },
     });
   }
