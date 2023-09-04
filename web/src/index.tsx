@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import './index.css';
@@ -7,6 +8,8 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { Auth0Provider } from "@auth0/auth0-react";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+dotenv.config();
 
 const queryClient = new QueryClient()
 
