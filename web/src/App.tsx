@@ -5,6 +5,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from 'react-router-dom';
 
 import MenuBar from './layout/MenuBar';
@@ -94,14 +95,17 @@ function App() {
       <Router>
         <Navigation />
         <Switch>
-          <Route path={ROUTE_VIEW_POSTS}>
+          <Route path={ROUTE_VIEW_POSTS} exact={true}>
             <Posts items={posts} />
           </Route>
-          <Route path={ROUTE_VIEW_USERS}>
+          <Route path={ROUTE_VIEW_USERS} exact={true}>
             <h1>This should contain the users view</h1>
           </Route>
-          <Route path={ROUTE_VIEW_ABOUT}>
+          <Route path={ROUTE_VIEW_ABOUT} exact={true}>
             <h1>This should contain the about view</h1>
+          </Route>
+          <Route path="*">
+            <Redirect to={ROUTE_VIEW_POSTS} />
           </Route>
         </Switch>
       </Router>
