@@ -3,19 +3,41 @@ import * as ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { Auth0Provider } from "@auth0/auth0-react";
+import { ReactQueryDevtools } from 'react-query/devtools'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const queryClient = new QueryClient()
+
+const isDevelopment = process.env.NODE_ENV === 'development';
+
+const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
+
+if (!domain) {
+  throw new Error('You must defined the env var REACT_APP_AUTH0_DOMAIN. For local development you can do this in your local .env file');
+}
+
+if (!clientId) {
+  throw new Error('You must defined the env var REACT_APP_AUTH0_CLIENT_ID. For local development you can do this in your local .env file');
+}
+
 ReactDOM.render(
-  <Auth0Provider
-    domain="vice-react-query-feathers-boilerplate.us.auth0.com"
-    clientId="sU7j9kc4TzG2nt07WVuWAuTQDmBuPt5i"
-    redirectUri={window.location.origin}
-  >
+
     <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Auth0Provider>,
+      <Auth0Provider
+        domain={domain}
+        clientId={clientId}
+        redirectUri={window.location.origin}
+        audience='https://vice-react-query-feathers-boilerplate-api-hs'
+      >
+        <QueryClientProvider client={queryClient}>
+          <App />
+          {isDevelopment && <ReactQueryDevtools initialIsOpen={false} />}
+        </QueryClientProvider>
+      </Auth0Provider>
+    </React.StrictMode>,
   document.getElementById('root')
 );
 

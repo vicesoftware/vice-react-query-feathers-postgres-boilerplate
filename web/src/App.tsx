@@ -1,39 +1,52 @@
 import React, { useEffect, useState } from 'react';
-import Badge from 'react-bootstrap/Badge'
-import logo from './logo.svg';
+import { useAuth0 } from '@auth0/auth0-react';
+import MenuBar from './layout/MenuBar';
+import { ApiStatusIndicator } from './features/apiStatusIndicator';
 import './App.css';
+import { useQuery } from 'react-query';
 
 function App() {
-  const [isHealthy, setIsHealthy] = useState(false);
-  
+  const { getAccessTokenSilently } = useAuth0();
+  const [accessToken, setAccessToken] = useState<string>();
+
   useEffect(() => {
-    fetch('health-check')
-      .then(r => r.json())
-      .then(j => {
-        const jAsJson = JSON.stringify(j);
-        console.log(jAsJson);
-        setIsHealthy(j.isHealthy);
-      });
-  }, [setIsHealthy])
+    (async () => {
+      try {
+        const token = await getAccessTokenSilently();
+
+        console.log(token);
+
+        setAccessToken(token);
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  }, [getAccessTokenSilently, setAccessToken]);
+
+  const todosQuery = useQuery('todos', async () => {
+    const response = await fetch('/todos', {
+      headers: new Headers({'accept': 'application/json', 'authorization': `Bearer ${accessToken}`})
+    })
+
+    if (!response.ok) {
+      console.log('Error calling api', JSON.stringify(response));
+      return;
+    }
+
+    const result = await response.json();
+
+    return result;
+  },    {
+    // The query will not execute until the userId exists
+    enabled: !!accessToken,
+  })
+
+  console.log(todosQuery);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
-        <Badge variant={isHealthy ? 'success' : 'danger'}>{isHealthy ? "API is healthy": "API is not healthy"}</Badge>
-      </header>
+      <MenuBar/>
+      <ApiStatusIndicator/>
     </div>
   );
 }

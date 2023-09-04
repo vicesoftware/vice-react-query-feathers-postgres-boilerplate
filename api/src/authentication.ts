@@ -22,6 +22,12 @@ class Auth0Strategy extends OAuthStrategy {
   }
 }
 
+class MyJwtStrategy extends JWTStrategy {
+  async getEntityQuery (_params: Params) {
+    return { auth0Id: true }
+  }
+}
+
 export default function(app: Application): void {
   const authentication = new AuthenticationService(app);
 
